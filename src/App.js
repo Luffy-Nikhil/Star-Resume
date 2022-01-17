@@ -1,11 +1,28 @@
 import "./App.css";
-import Heading from "./components/IntroPage";
+import Header from "./components/IntroPage.js";
+import Build from "./components/Build.js";
+import About from "./components/About.js";
+import Footer from "./components/Footer.js"
+
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Heading />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route exact path = "/" element = { <Header /> }/>
+          <Route exact path = "/build" element = { <Build /> }/>
+          <Route exact path = "/about" element = { <About /> }/>
+        </Routes> 
+        <Footer />
+      </div>
+    </BrowserRouter>
+    
   );
 }
 

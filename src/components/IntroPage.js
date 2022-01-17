@@ -2,9 +2,10 @@ import React from "react";
 import ReactRoundedImage from "react-rounded-image";
 import image1 from "./images/image1.jpeg";
 
-const Heading = () => {
+const Header = () => {
   return (
     <div>
+      
       <h1 style={{ color: "blue", fontSize: 22, padding: "0.5em 1em" }}>
         <b>Resume_Builder</b>
         <ReactRoundedImage
@@ -23,8 +24,8 @@ const Heading = () => {
             Build Resume
           </button>
         </div>
-      </div>
+      </div> 
     </div>
   );
 };
-export default Heading;
+export default Header;
