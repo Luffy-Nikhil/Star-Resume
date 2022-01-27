@@ -18,14 +18,14 @@
   
 }
 .Position-Static{
-  position:sticky;
- left:auto;
- transform: matrix(-50%,-50%);
+  position:static;
 }
 .gapsDiv {
+  padding: 20px;
+}
+.imageDiv{
+  max-width: 300px;
   
-  margin: 30px;
-  padding: 30px;
 }
 
 .Times-font{
@@ -33,7 +33,12 @@
 }
 
 .Icon-allign{
-  float: left
+  margin-top: 0;
+  float:inline-start
+
+}
+.Clear-Head{
+  clear: both;
 }
 .padding{
   padding: 1em
@@ -44,21 +49,49 @@
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 100%;
   background-color: rgb(185, 219, 223);
   color: rgb(8, 7, 7);
   
   text-align: left;
 }
 .Welcome-head{
-  font-size: 80px;
+  font-size: 60px;
+  margin-left: auto;
+  min-width: 800px;
 }
-
+.ParaGraphs{
+  font-size: 20px;
+  margin-left: auto;
+  margin-right:auto ;
+  max-width: 900px;
+}
+.BgColor{
+  background-color: #001220;
+}
+.White-font{
+  color: white;
+}
 /*navbar*/
-
+.space{
+  aspect-ratio: 960/200;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  
+}
+.bg1{
+  background-image: url('./components/images/bg1.svg');
+}
+.bg2{
+  background-image: url('./components/images/bg2.svg');
+}
 .navbar {
+  
   margin-left: auto;
   width: 40%;
-  background-color: rgb(255, 255, 255);
+  min-width: 500px;
+  background-color:#001220;
   overflow: auto;
   
 }
@@ -68,8 +101,7 @@
   float: right;
   text-align: center;
   padding: 1px;
-  color: rgb(24, 1, 1);
-  text-decoration: underline;
+  color: rgb(255, 255, 255);
   font-size: 17px;
   font-weight: bold;
 }
@@ -77,11 +109,14 @@
 /* Navbar links on mouse-over */
 .navbar a:hover {
   background-color: rgb(83, 193, 236);
+  border-radius: 20px;
+  box-shadow: blue;
 }
 
 /* Current/active navbar link */
 .active {
-  background-color: #8ebad8;
+  background-color: #f307c0;
+  border-radius: 20px;
 }
 
 /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
