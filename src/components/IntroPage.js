@@ -14,8 +14,8 @@ const Header = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
         <div>
-          <div class="navbar">
-            <a class="active" href="#">
+          <div class="navbar-first">
+            <a class="active-first" href="#">
               <i class="fa fa-fw fa-home"></i> Home
             </a>
             <a href="https://github.com/Luffy-Nikhil/resume-builder-web-app">
