@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&&display=swap');
+
 .App {
   text-align: center;
 }
@@ -123,6 +125,84 @@
 @media screen and (max-width: 500px) {
   .navbar a {
     float: none;
+    display: block;
+  }
+}
+
+/* Build CSS */
+.nav-build {
+  display: flex;
+  height: 10vh;
+  background-color: #212121;
+  padding: 24px 50px;
+  font-size: 20px;
+}
+.nav-li {
+  display: inline;
+  list-style: none;
+  margin-right: 80px;
+}
+.nav-head {
+  margin-right: 1000px;
+}
+
+.nav-a {
+  color: white;
+  text-decoration: none;
+}
+.container-build {
+  background-color: #EEEEEE;
+  padding: 20px 50px;
+}
+.card {
+  height : 1000px;
+  border : black solid 2px;
+  width: 50vw;
+}
+.card-header {
+  background-color: #506D84;
+  color: #F7F6F2;
+  padding: 50px 60px 20px;
+}
+.card-details {
+  padding: 50px 60px 60px;
+}
+.sec-partition {
+  border: 1px solid;
+  margin: 1px;
+}
+
+.template-heading {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.0rem;
+  margin: 1px;
+  font-weight: 800;
+  text-align: left;
+}
+.main-heading {
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 20px;
+}
+.person-profile {
+  display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+.id-link{
+  margin-right: 20px;
+}
+@media screen and (max-width: 1500px) {
+  .nav-build{
+    flex-direction: column;
+    justify-content: center;
+    height: 20vh;
+    /* align-items: center; */
+  
+  }
+  .nav-head {
+    margin-right: 70px;
+  }
+  .nav-li {
     display: block;
   }
 }
