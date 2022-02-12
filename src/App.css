@@ -1,101 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&&display=swap");
 
 .App {
   text-align: center;
 }
 
 .buildResumeButton {
-  background-image: linear-gradient(180deg, rgb(23, 162, 197), rgb(72, 147, 209) 40%, rgb(54, 185, 224));
+  background-image: linear-gradient(
+    180deg,
+    rgb(23, 162, 197),
+    rgb(72, 147, 209) 40%,
+    rgb(54, 185, 224)
+  );
   padding: 15px 32px;
   text-align: center;
   cursor: pointer;
   box-shadow: 2px 2px 10px rgb(46, 231, 255);
-  border-radius:20px;
+  border-radius: 20px;
   width: 300px;
   height: 75px;
   font-size: 25px;
   position: static;
   font-family: Georgia;
-  
-  
 }
-.Position-Static{
-  position:static;
+.Position-Static {
+  position: static;
 }
 .gapsDiv {
   padding: 20px;
 }
-.imageDiv{
+.imageDiv {
   max-width: 300px;
-  
 }
 
-.Times-font{
-  font-family:"Times New Roman"
+.Times-font {
+  font-family: "Times New Roman";
 }
 
-.Icon-allign{
+.Icon-allign {
   margin-top: 0;
-  float:inline-start
-
+  float: inline-start;
 }
-.Clear-Head{
+.Clear-Head {
   clear: both;
 }
-.padding{
-  padding: 1em
+.padding {
+  padding: 1em;
 }
 
 .footer {
-  position:static;
+  position: static;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
   background-color: rgb(185, 219, 223);
   color: rgb(8, 7, 7);
-  
+
   text-align: left;
 }
-.Welcome-head{
+.Welcome-head {
   font-size: 60px;
   margin-left: auto;
   min-width: 800px;
 }
-.ParaGraphs{
+.ParaGraphs {
   font-size: 20px;
   margin-left: auto;
-  margin-right:auto ;
+  margin-right: auto;
   max-width: 900px;
 }
-.BgColor{
+.BgColor {
   background-color: #001220;
 }
-.White-font{
+.White-font {
   color: white;
 }
 /*navbar*/
-.space{
+.space {
   aspect-ratio: 960/200;
   background-repeat: no-repeat;
   background-position: center;
-  background-size:cover;
-  
+  background-size: cover;
 }
-.bg1{
-  background-image: url('./components/images/bg1.svg');
+.bg1 {
+  background-image: url("./components/images/bg1.svg");
 }
-.bg2{
-  background-image: url('./components/images/bg2.svg');
+.bg2 {
+  background-image: url("./components/images/bg2.svg");
 }
 .navbar {
-  
   margin-left: auto;
   width: 40%;
   min-width: 500px;
-  background-color:#001220;
+  background-color: #001220;
   overflow: auto;
-  
 }
 
 /* Navbar links */
@@ -151,17 +149,24 @@
   text-decoration: none;
 }
 .container-build {
-  background-color: #EEEEEE;
+  display: flex;
+  background-color: #eeeeee;
   padding: 20px 50px;
+  justify-content: center;
 }
 .card {
-  height : 1000px;
-  border : black solid 2px;
+  height: 1000px;
+  border: black solid 2px;
   width: 50vw;
 }
-.card-header {
-  background-color: #506D84;
-  color: #F7F6F2;
+.card-header1 {
+  background-color: #506d84;
+  color: #f7f6f2;
+  padding: 50px 60px 20px;
+}
+.card-header2 {
+  background-color: #FC4F4F;
+  color: #f7f6f2;
   padding: 50px 60px 20px;
 }
 .card-details {
@@ -173,14 +178,14 @@
 }
 
 .template-heading {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.0rem;
+  font-family: "Libre Baskerville", serif;
+  font-size: 1rem;
   margin: 1px;
   font-weight: 800;
   text-align: left;
 }
 .main-heading {
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
   margin-bottom: 20px;
 }
 .person-profile {
@@ -188,16 +193,24 @@
   margin-bottom: 40px;
   justify-content: center;
 }
-.id-link{
+.id-link {
   margin-right: 20px;
 }
+.slide {
+  margin: 40px;
+  font-size: 70px;
+}
+.template-next {
+  display: flex;
+  justify-content: center;
+  background-color: #eeeeee;
+}
 @media screen and (max-width: 1500px) {
-  .nav-build{
+  .nav-build {
     flex-direction: column;
     justify-content: center;
     height: 20vh;
     /* align-items: center; */
-  
   }
   .nav-head {
     margin-right: 70px;
