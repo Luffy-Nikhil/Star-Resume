@@ -148,6 +148,9 @@
   color: white;
   text-decoration: none;
 }
+.print-btn {
+  margin-right : 0px;
+}
 .container-build {
   display: flex;
   background-color: #eeeeee;

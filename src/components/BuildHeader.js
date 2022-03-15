@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 const BuildHeader = () => {
+   
     return (
         // <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         //     <Link className="navbar-brand" to="/">Resume_Builder </Link>
@@ -43,6 +44,9 @@ const BuildHeader = () => {
                             Template
                         </Link>
                     </li>
+                    {/* <li className="nav-li">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/print.png"/>
+                    </li> */}
                 </ul>
             </div>
         </nav>

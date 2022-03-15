@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Template from './template.js';
+import {useReactToPrint} from 'react-to-print';
+
+
 
 const useInput = initialValue => {
     const [value, setValue] = useState(initialValue);
@@ -25,7 +28,7 @@ export default function Main() {
 
     const submit = event => {
         event.preventDefault();
-        
+
         resetName();
         resetProfile();
         resetEducation();
@@ -44,13 +47,21 @@ export default function Main() {
     const handleClickRight = () => {
         setTemplate(1);
     }
+
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
     return (
         <>
             <div className="container-build" align="center">
                 <button onClick={handleClickLeft} className="btn slide">
                     &laquo;
                 </button>
+
                 <Template
+                    ref={componentRef}
                     name={nameProps}
                     profile={profileProps}
                     education={educationProps}
@@ -60,11 +71,13 @@ export default function Main() {
                     certifications={certificationsProps}
                     languages={languagesProps}
                     interest={interestProps}
-                    template = {template}
+                    template={template}
+                    
                 />
-                <button onClick = {handleClickRight} className="btn slide">
+                <button onClick={handleClickRight} className="btn slide">
                     &raquo;
                 </button>
+                <button onClick={handlePrint}>Print this out!</button>
             </div>
         </>
 
