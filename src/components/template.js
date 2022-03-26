@@ -1,10 +1,10 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 
-const Template = (props) => {
+const Template = React.forwardRef((props, ref) => {
     
     return (
-        <div className="card">
+        <div ref={ref} className="card">
 
             <div className = { (props.template === 0) ? "card-header1" : "card-header2" } >
                 <TextField className='main-heading' value={props.name} placeholder="Name" />
@@ -95,7 +95,7 @@ const Template = (props) => {
 
         </div>
     )
-}
+});
 
 
 
