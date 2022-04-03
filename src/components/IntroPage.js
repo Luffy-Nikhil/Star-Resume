@@ -5,6 +5,7 @@ import image3 from "./images/proffesionals.png";
 import image4 from "./images/interview.png";
 import image5 from "./images/footer.png";
 import image6 from "./images/growth.png";
+
 const Header = () => {
   return (
     <body className="BgColor">
