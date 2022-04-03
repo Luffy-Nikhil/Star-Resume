@@ -17,10 +17,16 @@ export default function Main() {
 
     const [nameProps, resetName] = useInput("");
     const [profileProps, resetProfile] = useInput("");
+    const [profile2Props, reset2Profile] = useInput("");
+    const [profile3Props, reset3Profile] = useInput("");
+    const [profile4Props, reset4Profile] = useInput("");
     const [educationProps, resetEducation] = useInput("");
     const [skillProps, resetSkill] = useInput("");
+    const [skill2Props, reset2Skill] = useInput("");
     const [projectProps, resetProject] = useInput("");
+    const [project2Props, reset2Project] = useInput("");
     const [achievementProps, resetAchievement] = useInput("");
+    const [achievement2Props, reset2Achievement] = useInput("");
     const [certificationsProps, resetCertifications] = useInput("");
     const [languagesProps, resetLanugages] = useInput("");
     const [interestProps, resetInterest] = useInput("");
@@ -31,10 +37,16 @@ export default function Main() {
 
         resetName();
         resetProfile();
+        reset2Profile();
+        reset3Profile();
+        reset4Profile();
         resetEducation();
         resetSkill();
+        reset2Skill();
         resetProject();
+        reset2Project();
         resetAchievement();
+        reset2Achievement();
         resetCertifications();
         resetLanugages();
         resetInterest();
@@ -64,10 +76,16 @@ export default function Main() {
                     ref={componentRef}
                     name={nameProps}
                     profile={profileProps}
+                    profile2={profile2Props}
+                    profile3={profile3Props}
+                    profile4={profile4Props}
                     education={educationProps}
                     skills={skillProps}
+                    skills2={skill2Props}
                     projects={projectProps}
+                    projects2={project2Props}
                     achievements={achievementProps}
+                    achievements2={achievement2Props}
                     certifications={certificationsProps}
                     languages={languagesProps}
                     interest={interestProps}
