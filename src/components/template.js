@@ -7,11 +7,11 @@ const Template = React.forwardRef((props, ref) => {
     // Changed className from 'card' to fake class 'tempcard'
 
     const [eduInputList, setEduInputList] = useState([
-        { index: Math.random(), edu: "", cgpa: "", year: "" },
+        { edu: "", cgpa: "", year: "" },
     ]);
 
     const [skillInputList, setSkillInputList] = useState([
-        { index: Math.random(), skill: '' }
+        { skill: '' }
     ]);
 
     const handleEduChange = (e, index) => {
@@ -26,7 +26,7 @@ const Template = React.forwardRef((props, ref) => {
         setEduInputList(list);
     }
     const handleEduAddClick = () => {
-        setEduInputList([...eduInputList, { index: Math.random(), edu: '', cgpa: '', year: '' }]);
+        setEduInputList([...eduInputList, { edu: '', cgpa: '', year: '' }]);
     }
 
     const handleSkillChange = (e, index) => {
@@ -41,7 +41,7 @@ const Template = React.forwardRef((props, ref) => {
         setSkillInputList(list);
     }
     const handleSkillAddClick = () => {
-        setSkillInputList([...skillInputList, { index: Math.random(), skill: '' }]);
+        setSkillInputList([...skillInputList, { skill: '' }]);
     }
 
 
@@ -49,18 +49,11 @@ const Template = React.forwardRef((props, ref) => {
         <div ref={ref} className="border-4 border-slate-600 bg-[white] shadow-xl h-[1585px]">
 
             <div className={(props.template === 0) ? 'bg-[#506d84] text-white flex flex-col' : 'bg-[#668925] text-white flex flex-col'} >
-                {/* <div>
-                    <TextField className='main-heading' {...props.name} placeholder="Name" />
-                </div> */}
                 <div className="text-3xl py-4 px-4 flex justify-start">
                     <input type="text" placeholder="Name" {...props.name} className={(props.template === 0) ? 'bg-[#506d84] px-3 py-3 placeholder-white  text-white border-0 outline-none ' : 'bg-[#668925] px-3 py-3 placeholder-white  text-white border-0 outline-none '} />
                 </div>
 
                 <div className=' bg-slate-800 py-3 px-4 flex flex-row'>
-                    {/* <TextField text-color='white' {...props.profile} placeholder="Phone Number" />
-                    <TextField text-color='white' {...props.profile2} placeholder="Email" />
-                    <TextField text-color='white' {...props.profile3} placeholder="LinkedIn" />
-                    <TextField text-color='white' {...props.profile4} placeholder="GitHub" /> */}
                     <input type="text" placeholder="Phone Number" {...props.profile} className="px-3 py-3 placeholder-white bg-slate-800 text-white border-0 outline-none " />
                     <input type="text" placeholder="Email" {...props.profile2} className="px-3 py-3 placeholder-white bg-slate-800 text-white border-0 outline-none " />
                     <input type="text" placeholder="LinkedIn" {...props.profile3} className="px-3 py-3 placeholder-white bg-slate-800 text-white border-0 outline-none " />
@@ -79,11 +72,10 @@ const Template = React.forwardRef((props, ref) => {
                             <div className='flex flex-row text-xl pt-2 pb-4'>
 
                                 <div key={ind} className='flex flex-col grid grid-cols-3'>
-                                    <input type="text" placeholder="Edu" name='edu' value={eduInputList.edu} onChange={e => handleEduChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none " />
-                                    <input type="text" placeholder='cgpa' name='cgpa' value={eduInputList.cgpa} onChange={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
-                                    <input type="text" placeholder='year' name='year' value={eduInputList.year} onChange={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
+                                    <input type="text" placeholder="Edu" name='edu' value={eduInputList[ind].edu} onChange={e => handleEduChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none " />
+                                    <input type="text" placeholder='cgpa' name='cgpa' value={eduInputList[ind].cgpa} onChange={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
+                                    <input type="text" placeholder='year' name='year' value={eduInputList[ind].year} onChange={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
                                 </div>
-
                                 {
                                     eduInputList.length !== 1 &&
                                     <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleEduDeleteClick(ind)} /></div>
@@ -101,14 +93,6 @@ const Template = React.forwardRef((props, ref) => {
                 }
 
 
-
-                {/* <pre>
-                    {JSON.stringify(eduInputList, null, 2)}
-                </pre> */}
-
-
-
-
                 <h5 className='text-2xl flex flex-start flex-row font-bold font-serif border-b-2 border-black pt-4'>SKILLS</h5>
                 <div className='flex flex-row grid grid-cols-2' >
                     {
@@ -116,7 +100,7 @@ const Template = React.forwardRef((props, ref) => {
                             return (
 
                                 <div className='flex flex-row'>
-                                    <input key={ind} type="text" placeholder="skill" name="skill" value={skillInputList.skill} onChange={e => handleSkillChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
+                                    <input key={ind} type="text" placeholder="skill" name="skill" value={skillInputList[ind].skill} onChange={e => handleSkillChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                     {
                                         skillInputList.length !== 1 &&
                                         <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleSkillDeleteClick(ind)} /></div>
