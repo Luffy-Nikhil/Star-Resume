@@ -310,7 +310,7 @@ const Template = React.forwardRef((props, ref) => {
                                     }, 3000)
                                 }} key={ind} className='flex flex-row grid grid-cols-3'>
                                 <div className='flex flex-col col-span-2'>
-                                    <input className='flex w-full pr-0' type="text" placeholder="certification" name='certification' value={certificationList[ind].certification} onChange={e => handleCertificationChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
+                                    <input type="text" placeholder="certification" name='certification' value={certificationList[ind].certification} onChange={e => handleCertificationChange(e, ind)} className="px-3 py-3 placeholder-gray-600 flex w-full pr-0 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                 </div>
                                 <div className='flex flex-row justify-end'>
                                     {
