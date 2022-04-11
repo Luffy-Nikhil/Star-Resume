@@ -5,6 +5,13 @@ import { AiFillDelete } from 'react-icons/ai';
 
 const Template = React.forwardRef((props, ref) => {
     // Changed className from 'card' to fake class 'tempcard'
+    const [icon, setIcon] = useState(false);
+    const [iconSkill, setIconSkill] = useState(false);
+    const [iconProject, seticonProject] = useState(false);
+    const [iconAchievement, seticonAchievement] = useState(false);
+    const [iconCertification, seticonCertification] = useState(false);
+    const [iconInterest, seticonInterest] = useState(false);
+
 
     const [eduInputList, setEduInputList] = useState([
         { edu: "", cgpa: "", year: "" },
@@ -30,20 +37,24 @@ const Template = React.forwardRef((props, ref) => {
         { interest: '' }
     ]);
 
+
     // edu 
     const handleEduChange = (e, index) => {
         const { name, value } = e.target;
         const list = [...eduInputList];
         list[index][name] = value;
         setEduInputList(list);
+        setIcon(true);
     }
     const handleEduDeleteClick = (index) => {
         const list = [...eduInputList];
         list.splice(index, 1);
         setEduInputList(list);
+
     }
     const handleEduAddClick = () => {
         setEduInputList([...eduInputList, { edu: '', cgpa: '', year: '' }]);
+
     }
     //skill
     const handleSkillChange = (e, index) => {
@@ -51,6 +62,7 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...skillInputList];
         list[index][name] = value;
         setSkillInputList(list);
+        setIconSkill(true);
     }
     const handleSkillDeleteClick = (index) => {
         const list = [...skillInputList];
@@ -66,6 +78,7 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...projectInputList];
         list[index][name] = value;
         setProjectInputList(list);
+        seticonProject(true);
     }
     const handleProjectDeleteClick = (index) => {
         const list = [...projectInputList];
@@ -82,6 +95,7 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...achievementList];
         list[index][name] = value;
         setAchievementList(list);
+        seticonAchievement(true);
     }
     const handleAchievementDeleteClick = (index) => {
         const list = [...achievementList];
@@ -97,6 +111,7 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...certificationList];
         list[index][name] = value;
         setCertificationList(list);
+        seticonCertification(true);
     }
     const handleCertificationDeleteClick = (index) => {
         const list = [...certificationList];
@@ -113,6 +128,7 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...interestList];
         list[index][name] = value;
         setInterestList(list);
+        seticonInterest(true);
     }
     const handleInterestDeleteClick = (index) => {
         const list = [...interestList];
@@ -122,7 +138,14 @@ const Template = React.forwardRef((props, ref) => {
     const handleInterestAddClick = () => {
         setInterestList([...interestList, { interest: '' }]);
     }
-
+    const handleFocus = () => {
+        setIcon(true);
+    }
+    const handleBlur = () => {
+        setTimeout(() => {
+            setIcon(false)
+        }, 3000);
+    }
     return (
         <div ref={ref} className="border-4 border-slate-600 bg-[white] shadow-xl h-[1585px]">
 
@@ -147,25 +170,25 @@ const Template = React.forwardRef((props, ref) => {
                 {
                     eduInputList.map((item, ind) => {
                         return (
-                            <div className='flex flex-row text-xl pt-2 pb-4'>
+                            <div className='flex flex-row text-xl'>
 
-                                <div key={ind} className='flex flex-row'>
+                                <form onFocus={() => handleFocus()} onBlur={() => handleBlur()} key={ind} className='flex flex-row'>
 
-                                    <input size = "47" type="text" placeholder="Edu" name='edu' value={eduInputList[ind].edu} onChange={e => handleEduChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none " />
+                                    <input size="47" type="text" placeholder="Edu" name='edu' value={eduInputList[ind].edu} onChange={e => handleEduChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none " />
 
 
-                                    <input size = '4' type="text" placeholder='cgpa' name='cgpa' value = {eduInputList[ind].cgpa} onChange ={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
+                                    <input size='4' type="text" placeholder='cgpa' name='cgpa' value={eduInputList[ind].cgpa} onChange={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
 
-                                    <input size = '4' type="text" placeholder='year' name='year' value={eduInputList[ind].year} onChange={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
+                                    <input size='4' type="text" placeholder='year' name='year' value={eduInputList[ind].year} onChange={e => handleEduChange(e, ind)} className='px-3 py-3 bg-white placeholder-gray-600 text-gray-900 border-0 outline-none' />
 
-                                </div>
+                                </form>
                                 {
-                                    eduInputList.length !== 1 &&
+                                    (eduInputList.length !== 1 && icon) &&
                                     <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleEduDeleteClick(ind)} /></div>
                                 }
 
                                 {
-                                    eduInputList.length - 1 === ind &&
+                                    (eduInputList.length - 1 === ind && icon) &&
                                     <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleEduAddClick} /></div>
                                 }
 
@@ -176,30 +199,34 @@ const Template = React.forwardRef((props, ref) => {
                 }
 
 
-                <h5 className='text-2xl flex flex-start flex-row font-bold font-serif border-b-2 border-black pt-4'>SKILLS</h5>
+                <h5 className='text-2xl flex flex-start flex-row font-bold font-serif border-b-2 border-black'>SKILLS</h5>
                 <div className='flex flex-row grid grid-cols-2'>
 
                     {
                         skillInputList.map((item, ind) => {
                             return (
 
-                                <div className='flex flex-row'>
+                                <form onFocus={() => setIcon(true)} onBlur={() => {
+                                     setTimeout(() => {
+                                        setIconSkill(false)
+                                    }, 3000)
+                                }} className='flex flex-row'>
 
-                                    <input key={ind} size = '27' type="text" placeholder="skill" name="skill" value={skillInputList[ind].skill} onChange={e => handleSkillChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
+                                    <input key={ind} size='27' type="text" placeholder="skill" name="skill" value={skillInputList[ind].skill} onChange={e => handleSkillChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
 
                                     <div className='flex flex-row justify-end'>
                                         {
-                                            skillInputList.length !== 1 &&
+                                            (skillInputList.length !== 1 && iconSkill) &&
                                             <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleSkillDeleteClick(ind)} /></div>
                                         }
 
                                         {
-                                            skillInputList.length - 1 === ind &&
+                                            (skillInputList.length - 1 === ind && iconSkill) &&
                                             <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleSkillAddClick} /></div>
                                         }
                                     </div>
 
-                                </div>
+                                </form>
 
 
                             )
@@ -210,24 +237,28 @@ const Template = React.forwardRef((props, ref) => {
 
 
 
-                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black pt-4'>PROJECTS</h5>
+                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black'>PROJECTS</h5>
                 {
                     projectInputList.map((item, ind) => {
                         return (
-                            <div className='flex flex-row grid grid-cols-3'>
+                            <div onFocus={() => seticonProject(true)} onBlur={() => {
+                                     setTimeout(() => {
+                                        seticonProject(false)
+                                    }, 3000)
+                                }} className='flex flex-row grid grid-cols-3 pt-0'>
                                 <div key={ind} className='flex flex-col col-span-2'>
                                     <input type="text" placeholder="project" name='project' value={projectInputList[ind].project} onChange={e => handleProjectChange(e, ind)} className="px-2 py-2 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                     <textarea type="text" placeholder="desc" name='desc' value={projectInputList[ind].desc} onChange={e => handleProjectChange(e, ind)} className="px-2 py-2 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                 </div>
                                 <div className='flex flex-row justify-end'>
                                     {
-                                        projectInputList.length !== 1 &&
-                                        <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleProjectDeleteClick(ind)} /></div>
+                                        (projectInputList.length !== 1 && iconProject) &&
+                                        <div className='py-1 px-3'><AiFillDelete size='30' onClick={() => handleProjectDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        projectInputList.length - 1 === ind &&
-                                        <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleProjectAddClick} /></div>
+                                        (projectInputList.length - 1 === ind && iconProject) &&
+                                        <div className='py-1 px-3'><IoIosAddCircle size="30" onClick={handleProjectAddClick} /></div>
                                     }
                                 </div>
                             </div>
@@ -239,71 +270,83 @@ const Template = React.forwardRef((props, ref) => {
 
 
 
-                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black pt-4'>ACHIEVEMENTS</h5>
+                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black'>ACHIEVEMENTS</h5>
                 {
                     achievementList.map((item, ind) => {
                         return (
-                            <div className='flex flex-row grid grid-cols-3'>
+                            <form onFocus={() => seticonAchievement(true)} onBlur={() => {
+                                     setTimeout(() => {
+                                        seticonAchievement(false)
+                                    }, 3000)
+                                }} className='flex flex-row grid grid-cols-3'>
                                 <div key={ind} className='flex flex-col col-span-2'>
                                     <input type="text" placeholder="Achievement1" name='achievement' value={achievementList[ind].achievement} onChange={e => handleAchievementChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                 </div>
                                 <div className='flex flex-row justify-end'>
                                     {
-                                        achievementList.length !== 1 &&
+                                        (achievementList.length !== 1 && iconAchievement) &&
                                         <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleAchievementDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        achievementList.length - 1 === ind &&
+                                        (achievementList.length - 1 === ind && iconAchievement) &&
                                         <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleAchievementAddClick} /></div>
                                     }
                                 </div>
 
-                            </div>
+                            </form>
                         )
                     })
                 }
 
 
-                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black pt-4'>CERTIFICATIONS</h5>
+                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black'>CERTIFICATIONS</h5>
                 {
                     certificationList.map((item, ind) => {
                         return (
-                            <div key={ind} className='flex flex-row grid grid-cols-3'>
+                            <form onFocus={() => seticonCertification(true)} onBlur={() => {
+                                     setTimeout(() => {
+                                        seticonCertification(false)
+                                    }, 3000)
+                                }} key={ind} className='flex flex-row grid grid-cols-3'>
                                 <div className='flex flex-col col-span-2'>
                                     <input className='flex w-full pr-0' type="text" placeholder="certification" name='certification' value={certificationList[ind].certification} onChange={e => handleCertificationChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                 </div>
                                 <div className='flex flex-row justify-end'>
                                     {
-                                        certificationList.length !== 1 &&
+                                        (certificationList.length !== 1 && iconCertification) &&
                                         <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleCertificationDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        certificationList.length - 1 === ind &&
+                                        (certificationList.length - 1 === ind && iconCertification) &&
                                         <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleCertificationAddClick} /></div>
                                     }
                                 </div>
-                            </div>
+                            </form>
                         )
                     })
                 }
 
 
-                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black pt-4'>INTEREST</h5>
+                <h5 className='text-2xl flex flex-start font-bold font-serif border-b-2 border-black'>INTEREST</h5>
                 <div className='flex flex-col grid grid-cols-2'>
                     {
                         interestList.map((item, ind) => {
                             return (
-                                <div key={ind} className='flex flex-row'>
-                                    <input type="text" size = '27' placeholder="interest" name='interest' value={interestList[ind].interest} onChange={e => handleInterestChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
+                                <div onFocus={() => seticonInterest(true)} onBlur={() => {
+                                     setTimeout(() => {
+                                        seticonInterest(false)
+                                    }, 3000)
+                                }} key={ind} className='flex flex-row'>
+                                    <input type="text" size='27' placeholder="interest" name='interest' value={interestList[ind].interest} onChange={e => handleInterestChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                     {
-                                        interestList.length !== 1 &&
+                                        (interestList.length !== 1 && iconInterest) &&
                                         <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleInterestDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        interestList.length - 1 === ind &&
+                                        (interestList.length - 1 === ind && iconInterest) &&
                                         <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleInterestAddClick} /></div>
                                     }
                                 </div>
