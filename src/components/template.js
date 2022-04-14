@@ -5,13 +5,6 @@ import { AiFillDelete } from 'react-icons/ai';
 
 const Template = React.forwardRef((props, ref) => {
     // Changed className from 'card' to fake class 'tempcard'
-    const [icon, setIcon] = useState(false);
-    const [iconSkill, setIconSkill] = useState(false);
-    const [iconProject, seticonProject] = useState(false);
-    const [iconAchievement, seticonAchievement] = useState(false);
-    const [iconCertification, seticonCertification] = useState(false);
-    const [iconInterest, seticonInterest] = useState(false);
-
 
     const [eduInputList, setEduInputList] = useState([
         { edu: "", cgpa: "", year: "" },
@@ -44,7 +37,6 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...eduInputList];
         list[index][name] = value;
         setEduInputList(list);
-        setIcon(true);
     }
     const handleEduDeleteClick = (index) => {
         const list = [...eduInputList];
@@ -62,7 +54,6 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...skillInputList];
         list[index][name] = value;
         setSkillInputList(list);
-        setIconSkill(true);
     }
     const handleSkillDeleteClick = (index) => {
         const list = [...skillInputList];
@@ -78,7 +69,6 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...projectInputList];
         list[index][name] = value;
         setProjectInputList(list);
-        seticonProject(true);
     }
     const handleProjectDeleteClick = (index) => {
         const list = [...projectInputList];
@@ -95,7 +85,6 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...achievementList];
         list[index][name] = value;
         setAchievementList(list);
-        seticonAchievement(true);
     }
     const handleAchievementDeleteClick = (index) => {
         const list = [...achievementList];
@@ -111,7 +100,6 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...certificationList];
         list[index][name] = value;
         setCertificationList(list);
-        seticonCertification(true);
     }
     const handleCertificationDeleteClick = (index) => {
         const list = [...certificationList];
@@ -128,7 +116,6 @@ const Template = React.forwardRef((props, ref) => {
         const list = [...interestList];
         list[index][name] = value;
         setInterestList(list);
-        seticonInterest(true);
     }
     const handleInterestDeleteClick = (index) => {
         const list = [...interestList];
@@ -138,14 +125,7 @@ const Template = React.forwardRef((props, ref) => {
     const handleInterestAddClick = () => {
         setInterestList([...interestList, { interest: '' }]);
     }
-    const handleFocus = () => {
-        setIcon(true);
-    }
-    const handleBlur = () => {
-        setTimeout(() => {
-            setIcon(false)
-        }, 3000);
-    }
+    
     return (
         <div ref={ref} className="border-4 border-slate-600 bg-[white] shadow-xl h-[1585px]">
 
@@ -172,7 +152,7 @@ const Template = React.forwardRef((props, ref) => {
                         return (
                             <div className='flex flex-row text-xl'>
 
-                                <form onFocus={() => handleFocus()} onBlur={() => handleBlur()} key={ind} className='flex flex-row'>
+                                <form key={ind} className='flex flex-row'>
 
                                     <input size="47" type="text" placeholder="Edu" name='edu' value={eduInputList[ind].edu} onChange={e => handleEduChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none " />
 
@@ -183,12 +163,12 @@ const Template = React.forwardRef((props, ref) => {
 
                                 </form>
                                 {
-                                    (eduInputList.length !== 1 && icon) &&
+                                    (eduInputList.length !== 1 && props.icon) &&
                                     <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleEduDeleteClick(ind)} /></div>
                                 }
 
                                 {
-                                    (eduInputList.length - 1 === ind && icon) &&
+                                    (eduInputList.length - 1 === ind && props.icon) &&
                                     <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleEduAddClick} /></div>
                                 }
 
@@ -206,22 +186,18 @@ const Template = React.forwardRef((props, ref) => {
                         skillInputList.map((item, ind) => {
                             return (
 
-                                <form onFocus={() => setIcon(true)} onBlur={() => {
-                                     setTimeout(() => {
-                                        setIconSkill(false)
-                                    }, 3000)
-                                }} className='flex flex-row'>
+                                <form  className='flex flex-row'>
 
                                     <input key={ind} size='27' type="text" placeholder="skill" name="skill" value={skillInputList[ind].skill} onChange={e => handleSkillChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
 
                                     <div className='flex flex-row justify-end'>
                                         {
-                                            (skillInputList.length !== 1 && iconSkill) &&
+                                            (skillInputList.length !== 1 && props.icon) &&
                                             <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleSkillDeleteClick(ind)} /></div>
                                         }
 
                                         {
-                                            (skillInputList.length - 1 === ind && iconSkill) &&
+                                            (skillInputList.length - 1 === ind && props.icon) &&
                                             <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleSkillAddClick} /></div>
                                         }
                                     </div>
@@ -241,23 +217,19 @@ const Template = React.forwardRef((props, ref) => {
                 {
                     projectInputList.map((item, ind) => {
                         return (
-                            <div onFocus={() => seticonProject(true)} onBlur={() => {
-                                     setTimeout(() => {
-                                        seticonProject(false)
-                                    }, 3000)
-                                }} className='flex flex-row grid grid-cols-3 pt-0'>
+                            <div  className='flex flex-row grid grid-cols-3 pt-0'>
                                 <div key={ind} className='flex flex-col col-span-2'>
                                     <input type="text" placeholder="project" name='project' value={projectInputList[ind].project} onChange={e => handleProjectChange(e, ind)} className="px-2 py-2 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                     <textarea type="text" placeholder="desc" name='desc' value={projectInputList[ind].desc} onChange={e => handleProjectChange(e, ind)} className="px-2 py-2 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                 </div>
                                 <div className='flex flex-row justify-end'>
                                     {
-                                        (projectInputList.length !== 1 && iconProject) &&
+                                        (projectInputList.length !== 1 && props.icon) &&
                                         <div className='py-1 px-3'><AiFillDelete size='30' onClick={() => handleProjectDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        (projectInputList.length - 1 === ind && iconProject) &&
+                                        (projectInputList.length - 1 === ind && props.icon) &&
                                         <div className='py-1 px-3'><IoIosAddCircle size="30" onClick={handleProjectAddClick} /></div>
                                     }
                                 </div>
@@ -274,22 +246,18 @@ const Template = React.forwardRef((props, ref) => {
                 {
                     achievementList.map((item, ind) => {
                         return (
-                            <form onFocus={() => seticonAchievement(true)} onBlur={() => {
-                                     setTimeout(() => {
-                                        seticonAchievement(false)
-                                    }, 3000)
-                                }} className='flex flex-row grid grid-cols-3'>
+                            <form  className='flex flex-row grid grid-cols-3'>
                                 <div key={ind} className='flex flex-col col-span-2'>
                                     <input type="text" placeholder="Achievement1" name='achievement' value={achievementList[ind].achievement} onChange={e => handleAchievementChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                 </div>
                                 <div className='flex flex-row justify-end'>
                                     {
-                                        (achievementList.length !== 1 && iconAchievement) &&
+                                        (achievementList.length !== 1 && props.icon) &&
                                         <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleAchievementDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        (achievementList.length - 1 === ind && iconAchievement) &&
+                                        (achievementList.length - 1 === ind && props.icon) &&
                                         <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleAchievementAddClick} /></div>
                                     }
                                 </div>
@@ -304,22 +272,18 @@ const Template = React.forwardRef((props, ref) => {
                 {
                     certificationList.map((item, ind) => {
                         return (
-                            <form onFocus={() => seticonCertification(true)} onBlur={() => {
-                                     setTimeout(() => {
-                                        seticonCertification(false)
-                                    }, 3000)
-                                }} key={ind} className='flex flex-row grid grid-cols-3'>
+                            <form  key={ind} className='flex flex-row grid grid-cols-3'>
                                 <div className='flex flex-col col-span-2'>
                                     <input type="text" placeholder="certification" name='certification' value={certificationList[ind].certification} onChange={e => handleCertificationChange(e, ind)} className="px-3 py-3 placeholder-gray-600 flex w-full pr-0 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                 </div>
                                 <div className='flex flex-row justify-end'>
                                     {
-                                        (certificationList.length !== 1 && iconCertification) &&
+                                        (certificationList.length !== 1 && props.icon) &&
                                         <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleCertificationDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        (certificationList.length - 1 === ind && iconCertification) &&
+                                        (certificationList.length - 1 === ind && props.icon) &&
                                         <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleCertificationAddClick} /></div>
                                     }
                                 </div>
@@ -334,19 +298,15 @@ const Template = React.forwardRef((props, ref) => {
                     {
                         interestList.map((item, ind) => {
                             return (
-                                <div onFocus={() => seticonInterest(true)} onBlur={() => {
-                                     setTimeout(() => {
-                                        seticonInterest(false)
-                                    }, 3000)
-                                }} key={ind} className='flex flex-row'>
+                                <div  key={ind} className='flex flex-row'>
                                     <input type="text" size='27' placeholder="interest" name='interest' value={interestList[ind].interest} onChange={e => handleInterestChange(e, ind)} className="px-3 py-3 placeholder-gray-600 bg-white text-gray-900 border-0 outline-none  text-xl" />
                                     {
-                                        (interestList.length !== 1 && iconInterest) &&
+                                        (interestList.length !== 1 && props.icon) &&
                                         <div className='py-3 px-3'><AiFillDelete size='30' onClick={() => handleInterestDeleteClick(ind)} /></div>
                                     }
 
                                     {
-                                        (interestList.length - 1 === ind && iconInterest) &&
+                                        (interestList.length - 1 === ind && props.icon) &&
                                         <div className='py-3 px-3'><IoIosAddCircle size="30" onClick={handleInterestAddClick} /></div>
                                     }
                                 </div>

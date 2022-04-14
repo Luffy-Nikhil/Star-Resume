@@ -10,6 +10,8 @@ import BuildHeader from './BuildHeader.js'
 export default function Main() {
 
     const [template, setTemplate] = useState(0);
+    const [icon, setIcon] = useState(true);
+
     const handleClickLeft = () => {
         setTemplate(0);
     }
@@ -21,8 +23,12 @@ export default function Main() {
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
-    }); 
-    
+    });
+
+    const handleClick = () => {
+        setIcon(false);
+    }
+
     return (
         <div className='flex flex-col h-full'>
 
@@ -36,16 +42,17 @@ export default function Main() {
                 <Template
                     ref={componentRef}
                     template={template}
+                    icon={icon}
                 />
                 <button onClick={handleClickRight} className='flex items-center px-8 py-2 my-auto border-4 border-[#1e293b] bg-[#eeeeee] ml-8 hover:bg-gray-600 hover:text-white'>
                     <AiOutlineDoubleRight size='30' />
                 </button>
-                <button className='flex items-center text-xl px-8 py-2 my-auto border-4 border-[#1e293b] bg-[#eeeeee] ml-8 hover:bg-gray-600 hover:text-white'>
+                <button onClick={handleClick} className='flex items-center text-xl px-8 py-2 my-auto border-4 border-[#1e293b] bg-[#eeeeee] ml-8 hover:bg-gray-600 hover:text-white'>
                     Save
                 </button>
                 <div className='flex flex-col justify-center mx-auto'>
                     <p className='text-xl text-[#1e293b]'>Print it!</p>
-                    <button onClick = {handlePrint} className='flex items-center mx-auto border-4 border-[#1e293b] px-8 py-2 hover:bg-gray-600'><FcPrint size='40' /></button>
+                    <button onClick={handlePrint} className='flex items-center mx-auto border-4 border-[#1e293b] px-8 py-2 hover:bg-gray-600'><FcPrint size='40' /></button>
                 </div>
             </div>
 
