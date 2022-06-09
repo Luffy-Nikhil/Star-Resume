@@ -1,9 +1,9 @@
 
 # Star Resume
 
-- It is web application for creating great resume for interviews. 
+- An easy to use Web application for creating great resume for interviews. 
 
-- Here you can create a single page resume for interviews.
+- Great for creating a single page resume for interviews.
 
 - Deployed on - https://taupe-alpaca-3d6e99.netlify.app/
 
@@ -15,7 +15,7 @@
 - HTML
 - JavaScript
 - CSS
-## Screenshots
+## A glimpse to Web App
 
 ![App Screenshot](https://github.com/Luffy-Nikhil/Star-Resume/blob/main/public/images/Screenshot%20from%202022-05-31%2009-49-11.png?raw=true)
 
