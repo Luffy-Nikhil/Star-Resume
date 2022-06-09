@@ -31,8 +31,8 @@
 ## Authors
 
 - [@Nikhil](https://github.com/Luffy-Nikhil)
-- [@Anurag](https://github.com/JOSBEAK)
-- [@Tushar](https://github.com/CeNiEi)
+- [@JOSBEAK](https://github.com/JOSBEAK)
+- [@CeNiEi](https://github.com/CeNiEi)
 
 
 ## Acknowledgements
