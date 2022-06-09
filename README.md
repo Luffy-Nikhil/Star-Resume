@@ -5,6 +5,8 @@
 
 - Great for creating a single page resume for interviews.
 
+- Two types of templates are given for creating resume.
+
 - Deployed on - https://taupe-alpaca-3d6e99.netlify.app/
 
 
@@ -15,6 +17,7 @@
 - HTML
 - JavaScript
 - CSS
+
 ## A glimpse to Web App
 
 ![App Screenshot](https://github.com/Luffy-Nikhil/Star-Resume/blob/main/public/images/Screenshot%20from%202022-05-31%2009-49-11.png?raw=true)
@@ -30,7 +33,7 @@
 
 ## Authors
 
-- [@Nikhil](https://github.com/Luffy-Nikhil)
+- [@Luffy-Nikhil](https://github.com/Luffy-Nikhil)
 - [@JOSBEAK](https://github.com/JOSBEAK)
 - [@CeNiEi](https://github.com/CeNiEi)
 
